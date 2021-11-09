@@ -207,22 +207,6 @@ public boolean valideName(String name){
     */
 public void createProduct(String name,int day,int month,int year,String director,String synopsis,String 
                           nameOriginal,String producer,int ageMin,int optioncategory,String trailer){
-    String categoryMovie = "";
-    if (optioncategory ==1){
-     categoryMovie = "ROMANTIC";
-    }
-    if (optioncategory ==2){
-     categoryMovie = "ACTION";
-    }
-    if (optioncategory ==3){
-     categoryMovie = "THRILLER";
-    }
-    if (optioncategory ==4){
-     categoryMovie = "HORROR";
-    }
-    if (optioncategory ==5){
-     categoryMovie = "COMEDY";
-    }
     int position =0;
     boolean flag = false;
     for (int i =0; i < products.length && ! flag ;i++){
@@ -231,7 +215,7 @@ public void createProduct(String name,int day,int month,int year,String director
          flag = true;
     }
     }
-     products[position] = new Movie(name,day,month,year,director,synopsis,nameOriginal,producer,ageMin,categoryMovie,trailer);
+     products[position] = new Movie(name,day,month,year,director,synopsis,nameOriginal,producer,ageMin,optioncategory,trailer);
     System.out.println("Product Created");
   }
 
@@ -315,7 +299,15 @@ public void createProduct(String name,int day,int month,int year,String director
         String valideName = products[i].getName();
      if (valideName.equals(name)){
         flag = true;
-        products[i].addSeason(numberSeason,episodesProg,episodesPost,dayS,monthS,yearS,trailer);
+
+     if (products[i] instanceof Serie){
+
+        Serie temp = (Serie) products[i];
+
+        temp.addSeason(numberSeason,episodesProg,episodesPost,dayS,monthS,yearS,trailer);
+
+        products[i] = temp;
+    }
     }
     }
     }
@@ -345,12 +337,17 @@ public void createProduct(String name,int day,int month,int year,String director
     }
     for (int i =0; i < products.length ;i++){
     if (products[i]!= null){
-    if ((products[i].getTypeMovies()).equals(categoryMovie)){
-        out += products[i].toString();
+    if (products[i] instanceof Movie){
+
+        Movie temp = (Movie) products[i];
+
+        String value = temp.getTypeMovie().toString();
+    if (value.equals(categoryMovie)){
+     System.out.println(products[i].toString());
     }   
     }
     }
-    System.out.println(out);
+    }
     }
 
   /**

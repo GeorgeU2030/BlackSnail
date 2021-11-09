@@ -6,16 +6,15 @@ private String nameOriginal;
 private String producer;
 private int ageMin;
 private String trailer;
-private String typemovies;
+private Typemovie typemovies;
 
-public Movie(String name, int day, int month, int year, String director, String synopsis, String nameOriginal, String producer,int ageMin,String
-            typemovies, String trailer) {
+public Movie(String name, int day, int month, int year, String director, String synopsis, String nameOriginal, String producer,int ageMin,int optionCategory, String trailer) {
 
         super(name,day,month,year,director,synopsis);
         this.nameOriginal = nameOriginal;
         this.producer= producer;
         this.ageMin = ageMin;
-        this.typemovies = typemovies;
+        typemovies = setTypeMovies(optionCategory);
         this.trailer = trailer;
         
 }
@@ -40,12 +39,35 @@ public String toString(){
 		out += "Trailer: "+ trailer;
 		return out;
 	}
-@Override
-public String getTypeMovies(){
+
+/**
+ * Method to change the category Movie
+ * @param optionCategory int is the option of the category
+ * @return out String is the information message 
+ */ 
+public Typemovie setTypeMovies(int optionCategory){
+   switch(optionCategory){
+   case 1:
+   typemovies = Typemovie.ROMANTIC;
+   break;
+   case 2:
+   typemovies = Typemovie.ACTION;
+   break;
+   case 3:
+   typemovies = Typemovie.THRILLER;
+   break;
+   case 4:
+   typemovies = Typemovie.HORROR;
+   break;
+   case 5:
+   typemovies = Typemovie.COMEDY;
+   }
    return typemovies;
-	}
+	}	
 
+ public Typemovie getTypeMovie(){
+   return typemovies;
+ 	}
 
-		
 }
 

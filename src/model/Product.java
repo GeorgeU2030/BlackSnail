@@ -37,13 +37,7 @@ public String toString(){
 		return out;
 	}
 
-public void addSeason(int numberSeason,int episodesProg,int episodesPost,int dayS,int 
-                        monthS,int yearS,String trailer){
-	}
 
-public String getTypeMovies(){
-	return name;
-	 }
 
 
 	

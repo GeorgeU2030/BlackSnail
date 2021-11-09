@@ -27,7 +27,7 @@ public Serie(String name, int day, int month, int year, String director, String 
     * @param monthS int is the premiere month of the Season
     * @param yearS int is the premiere year of the Season
     */
-@Override
+
 public void addSeason(int numberSeason,int episodesProg,int episodesPost,int dayS,int 
                         monthS,int yearS,String trailer){
     boolean flag = false;
